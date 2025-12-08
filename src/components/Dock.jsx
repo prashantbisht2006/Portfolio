@@ -57,7 +57,17 @@ export const Dock = () => {
     };
   }, []);
 
-  const toggleApp = (app) => {};
+
+
+
+
+  const toggleApp = (app) => {
+    ////////////
+  };
+
+
+
+
 
   return (
     <section id="dock">
