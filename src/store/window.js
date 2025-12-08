@@ -1,21 +1,42 @@
+// src/store/window.js
 import { create } from "zustand";
-import { Immer } from "immer";
-import { WINDOW_CONFIG,INITIAL_Z_INDEX } from "#constants";
+import { immer } from "zustand/middleware/immer";
+import { WINDOW_CONFIG, INITIAL_Z_INDEX } from "#constants";
 
-const useWindowstore = create(immer((set)=>({
-    windows:WINDOW_CONFIG,
-    nextZindex :INITIAL_Z_INDEX+1,
+const useWindowStore = create(
+  immer((set) => ({
+    windows: WINDOW_CONFIG,
+    nextZIndex: INITIAL_Z_INDEX + 1,
 
-    OpenWindows:(windowKeys,data= null)=>set((state)=>{
-        const win = state.windows[windowKeys];
-        win.isOpen= true;
-        win.zIndex = state.nextZindex;
-       win .data = data ?? win.data; 
-    }),
-    CloseWindows:(windowKeys)=>set((state)=>{
+    // Open a window (id = window key)
+    openWindow: (windowKey, data = null) =>
+      set((state) => {
+        const win = state.windows[windowKey];
+        if (!win) return;
+        win.isOpen = true;
+        win.zIndex = state.nextZIndex;
+        win.data = data ?? win.data;
+        state.nextZIndex++;
+      }),
 
-    }),
-    FocusWindows:(windowKeys )=>set((state)=>{
+    // Close a window
+    closeWindow: (windowKey) =>
+      set((state) => {
+        const win = state.windows[windowKey];
+        if (!win) return;
+        win.isOpen = false;
+        win.zIndex = INITIAL_Z_INDEX;
+        win.data = null;
+      }),
 
-    }),
-})));
+    // Bring window to front
+    focusWindow: (windowKey) =>
+      set((state) => {
+        const win = state.windows[windowKey];
+        if (!win) return;
+        win.zIndex = state.nextZIndex++;
+      }),
+  }))
+);
+
+export default useWindowStore;

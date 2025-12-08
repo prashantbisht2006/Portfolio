@@ -3,9 +3,11 @@ import React, { useRef } from "react";
 import gsap from "gsap";
 import { Tooltip } from "react-tooltip";
 import { useGSAP } from "@gsap/react";
+import useWindowStore from "#store/window";
 
 export const Dock = () => {
   const dockRef = useRef(null);
+  const { openWindow, closeWindow, windows } = useWindowStore();
 
   useGSAP(() => {
     const dock = dockRef.current;
@@ -57,17 +59,25 @@ export const Dock = () => {
     };
   }, []);
 
-
-
-
-
   const toggleApp = (app) => {
-    ////////////
+    if (!app.canOpen) return;
+
+    // avoid using variable name "window" (global)
+    const win = windows[app.id];
+    if (!win) {
+      console.warn("No window config for id:", app.id);
+      return;
+    }
+
+    if (win.isOpen) {
+      closeWindow(app.id);
+    } else {
+      openWindow(app.id);
+    }
+    console.log(windows);
+    // If you want fresh state, read it after a small tick (optional)
+    // setTimeout(() => console.log(useWindowStore.getState().windows), 0);
   };
-
-
-
-
 
   return (
     <section id="dock">
