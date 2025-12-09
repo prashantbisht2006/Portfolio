@@ -62,7 +62,7 @@ export const Dock = () => {
   const toggleApp = (app) => {
     if (!app.canOpen) return;
 
-    // avoid using variable name "window" (global)
+   
     const win = windows[app.id];
     if (!win) {
       console.warn("No window config for id:", app.id);
@@ -75,8 +75,7 @@ export const Dock = () => {
       openWindow(app.id);
     }
     console.log(windows);
-    // If you want fresh state, read it after a small tick (optional)
-    // setTimeout(() => console.log(useWindowStore.getState().windows), 0);
+    
   };
 
   return (
