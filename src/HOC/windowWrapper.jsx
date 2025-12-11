@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useLayoutEffect, useRef } from 'react';
 import useWindowStore from '#store/window';
 import { useGSAP } from '@gsap/react';
 
@@ -9,9 +9,22 @@ const windowWrapper = (Component, windowKey) => {
     const { isOpen, zIndex } = windows[windowKey] || {};
     const ref = useRef(null);
 
-    
+    useGSAP(() => {
+      const el = ref.current;
+      if (!el || !isOpen) {
+        console.log("window not open");
+        return;
+      }
+      el.style.display = "block";
+    }, [isOpen]);
 
-    if (!isOpen) return null; // optional: if window is closed, hide it
+    useLayoutEffect(() => {
+      const el = ref.current;
+      if (!el) return;
+      el.style.display = isOpen ? "block" : "none";
+    }, [isOpen]);
+
+    if (!isOpen) return null;
 
     return (
       <section
