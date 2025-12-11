@@ -173,7 +173,7 @@ body {
       @apply text-sm font-roboto p-5;
 
       .label {
-        @apply flex items-center ms-10 mt-7;
+        @apply flex items-center ms-12 mt-7;
       }
 
       .content {
@@ -185,11 +185,11 @@ body {
           }
 
           h3 {
-            @apply font-semibold text-[#00A154] w-32 ms-5;
+            @apply font-semibold text-[#00A154] w-35 ms-5;
           }
 
           ul {
-            @apply flex items-center gap-3;
+            @apply flex items-center gap-0.5;
           }
         }
       }

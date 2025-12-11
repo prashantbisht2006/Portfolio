@@ -110,7 +110,7 @@ const techStack = [
   },
   {
     category: "Styling",
-    items: ["Tailwind CSS,", "CSS"],
+    items: ["Tailwindcss,","CSS"],
   },
   {
     category: "Backend",
