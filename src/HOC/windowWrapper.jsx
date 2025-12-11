@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import useWindowStore from '#store/window';
+import { useGSAP } from '@gsap/react';
 
 const windowWrapper = (Component, windowKey) => {
   
@@ -7,6 +8,8 @@ const windowWrapper = (Component, windowKey) => {
     const { focusWindow, windows } = useWindowStore();
     const { isOpen, zIndex } = windows[windowKey] || {};
     const ref = useRef(null);
+
+    
 
     if (!isOpen) return null; // optional: if window is closed, hide it
 

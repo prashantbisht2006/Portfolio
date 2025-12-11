@@ -1,6 +1,6 @@
 import React from 'react';
 import windowWrapper from '../HOC/windowWrapper';
-import { Check } from 'lucide-react';
+import { Check ,FlagIcon ,Flag } from 'lucide-react';
 import { techStack } from '#constants';
 
 const Terminall = () => {
@@ -35,6 +35,15 @@ const Terminall = () => {
             </li>
           ))}
         </ul>
+        <div className='footnote'>
+          <p>
+            <Check size={20} /> 5 of 5 stacks loaded sucessfully (100%)
+        </p>
+        <p>
+          <Flag size={15} fill="black"/>
+          Render Time :6ms
+        </p>
+        </div>
       </div>
     </>
   );
