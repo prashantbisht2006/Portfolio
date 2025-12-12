@@ -2,6 +2,7 @@ import React from 'react';
 import Navbar from '#components/Navbar';
 import Welcome from '#components/Welcome';
 import TerminalWindow from '#windows/Terminall';
+import Safari from '#windows/Safari';
 import { Dock } from '#components/Dock';
 import gsap from 'gsap';
 import { Draggable } from 'gsap/Draggable';
@@ -14,6 +15,7 @@ const App = () => {
       <Welcome/>
       <Dock/>
       <TerminalWindow/>
+      <Safari/>
     </main>
   )
 }
