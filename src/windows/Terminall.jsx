@@ -2,12 +2,13 @@ import React from 'react';
 import windowWrapper from '../HOC/windowWrapper';
 import { Check ,FlagIcon ,Flag } from 'lucide-react';
 import { techStack } from '#constants';
+import Windowcontrol from '#components/windowcontrol';
 
 const Terminall = () => {
   return (
     <>
       <div id="window-header">
-        <p>Window Control</p>
+        <Windowcontrol target="terminal"/>
         <h2>Tech Stack</h2>
       </div>
 

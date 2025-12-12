@@ -29,6 +29,47 @@ const useWindowStore = create(
         win.data = null;
       }),
 
+      // NEW — minimize (no name change)
+   // ADD BELOW YOUR EXISTING ACTIONS
+// -----------------------------------------------
+// Minimize Window
+minimizeWindow: (windowKey) =>
+  set((state) => {
+    const win = state.windows[windowKey];
+    if (!win) return;
+
+    // If window is maximized → restore (not minimize)
+    if (win.isMaximized) {
+      win.isMaximized = false;
+      win.isMinimized = false;
+      return;
+    }
+
+    // Otherwise normal minimize
+    win.isMinimized = true;
+    win.isMaximized = false;
+  }),
+
+// Maximize Window
+maximizeWindow: (windowKey) =>
+  set((state) => {
+    const win = state.windows[windowKey];
+    if (!win) return;
+    win.isMaximized = true;
+    win.isMinimized = false;
+  }),
+
+// Toggle Maximize (restore previous size)
+toggleMaximize: (windowKey) =>
+  set((state) => {
+    const win = state.windows[windowKey];
+    if (!win) return;
+    win.isMaximized = !win.isMaximized;
+    win.isMinimized = false; 
+  }),
+// -----------------------------------------------
+
+
     // Bring window to front
     focusWindow: (windowKey) =>
       set((state) => {

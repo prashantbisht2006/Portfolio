@@ -10,7 +10,8 @@ const windowWrapper = (Component, windowKey) => {
   
   const Wrapped = (props) => {
     const { focusWindow, windows } = useWindowStore();
-    const { isOpen, zIndex } = windows[windowKey] || {};
+    const { isOpen, zIndex,isMinimized, isMaximized } = windows[windowKey] || {};
+    
     const ref = useRef(null);
 
     useGSAP(() => {
@@ -26,6 +27,7 @@ const windowWrapper = (Component, windowKey) => {
       )
     }, [isOpen]);
 
+
   // for dragging the window
   useGSAP(() => {
   const el = ref.current;
@@ -33,14 +35,17 @@ const windowWrapper = (Component, windowKey) => {
 
   gsap.set(el, { clearProps: "transform" }); // Removes animation transform
 
-  Draggable.create(el, {
+  const [instance]=Draggable.create(el, {
     type: "x,y",
     bounds: window,
     onPress: () => focusWindow(windowKey),
   });
+  return ()=> instance.kill();
 
 }, []);
 
+
+   
 
     useLayoutEffect(() => {
       const el = ref.current;
@@ -50,17 +55,44 @@ const windowWrapper = (Component, windowKey) => {
 
     
 
-    return (
-      <section
-        id={windowKey}
-        ref={ref}
-        style={{ zIndex }}
-        className="absolute"
-        onMouseDown={() => focusWindow(windowKey)}
-      >
-        <Component {...props} />
-      </section>
-    );
+    // -----------------------------------------------
+// APPLY MINIMIZE / MAXIMIZE / RESTORE STYLES
+// -----------------------------------------------
+let style = { zIndex };
+
+if (isMinimized) {
+  // hides window
+  style.display = "none";
+}
+
+if (isMaximized) {
+  // fullscreen window
+  style = {
+    ...style,
+    top: 0,
+    left: 0,
+    width: "100vw",
+    height: "100vh",
+    transform: "none",
+    position: "absolute",
+  };
+}
+// -----------------------------------------------
+
+
+// FIXED: replaced `style={{ zIndex }}` with `style={style}`
+return (
+  <section
+    id={windowKey}
+    ref={ref}
+    style={style}               // ✅ CORE FIX
+    className="absolute"
+    onMouseDown={() => focusWindow(windowKey)}
+  >
+    <Component {...props} />
+  </section>
+);
+
   };
 
   Wrapped.displayName = `windowWrapper(${Component.displayName || Component.name || "Component"})`;
