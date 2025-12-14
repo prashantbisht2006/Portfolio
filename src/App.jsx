@@ -6,7 +6,10 @@ import Safari from '#windows/Safari';
 import { Dock } from '#components/Dock';
 import gsap from 'gsap';
 import { Draggable } from 'gsap/Draggable';
+import TextWindow from '#windows/Text';
 import Finder from '#windows/Finder';
+import ImageWindow from '#windows/Image';
+import ContactWindow from '#windows/Contacts';
 
 import Resumewindow from '#windows/Resume';
 
@@ -21,6 +24,9 @@ const App = () => {
       <Safari/>
       <Resumewindow/>
       <Finder/>
+      <TextWindow/>
+      <ImageWindow/>
+      <ContactWindow/>
     </main>
   )
 }
