@@ -377,9 +377,10 @@ body {
   }
 
   #home {
-    @apply relative z-0 max-sm:hidden;
+    @apply relative z-0 max-sm:hidden w-full h-screen;
 
     ul {
+      @apply relative w-full h-full;
       li {
         @apply absolute z-0 select-none flex items-center flex-col;
 

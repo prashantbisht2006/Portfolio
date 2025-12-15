@@ -10,6 +10,8 @@ import TextWindow from '#windows/Text';
 import Finder from '#windows/Finder';
 import ImageWindow from '#windows/Image';
 import ContactWindow from '#windows/Contacts';
+import { Home } from '#components/Home';
+
 
 import Resumewindow from '#windows/Resume';
 
@@ -25,8 +27,10 @@ const App = () => {
       <Resumewindow/>
       <Finder/>
       <TextWindow/>
-      <ImageWindow/>
+      {/* <ImageWindow/> */}
       <ContactWindow/>
+      <Home/>
+      
     </main>
   )
 }
