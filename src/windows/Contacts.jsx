@@ -1,7 +1,8 @@
 import React from "react";
 import windowWrapper from "../HOC/windowWrapper";
 import Windowcontrol from "#components/windowcontrol";
-import { socials } from "#constants"; // ✅ FIX 1
+import { socials } from "#constants"; 
+import { Copy } from "lucide-react";
 
 const Contacts = () => {
   return (
@@ -10,18 +11,27 @@ const Contacts = () => {
         <Windowcontrol target="contact" />
         <h2>Contact Me</h2>
         <p>prashantbisht284@gmail.com</p>
+        <Copy
+  className="icon cursor-pointer"
+  onClick={() => {
+    navigator.clipboard.writeText("prashantbisht284@gmail.com");
+    alert("Email copied!");
+  }}
+  title="Copy email"
+/>
+
       </div>
 
       <div className="p-5 space-y-5">
         <img
-          src="/images/adrian.jpg"
+          src="/images/prashant.PNG"
           alt="Adrian"
           className="w-20 rounded-full"
         />
 
         <h3 className="text-lg font-semibold">Let’s Connect</h3>
 
-        <p>aao kabhi haveli pe 😄</p>
+        <p>I am passionate about building great solutions and always open to discussing new projects, creative opportunities, or collaborations. Feel free to connect!</p>
 
         <ul className="space">
           {socials.map(({ id, bg, link, icon, text }) => (

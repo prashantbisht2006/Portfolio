@@ -33,7 +33,7 @@ const Safari = () => {
       </div>
 
       <div className='blog'>
-        <h2>blogs</h2>
+        <h2>Leetcode Solution's</h2>
 
         <div className='space-y-8'>
           {blogPosts.map(({ id, image, title, date, link }) => (

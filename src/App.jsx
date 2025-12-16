@@ -27,7 +27,7 @@ const App = () => {
       <Resumewindow/>
       <Finder/>
       <TextWindow/>
-      {/* <ImageWindow/> */}
+      <ImageWindow/>
       <ContactWindow/>
       <Home/>
       
