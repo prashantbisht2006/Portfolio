@@ -8,7 +8,7 @@ const { openWindow } = useWindowStore();
   return (
     <nav>
         <div>
-            <img src='/public/images/logo.svg' alt='logo'/>
+            
             <p className='font-bold'>Prashant's Portfolio</p>
 
             <ul>
