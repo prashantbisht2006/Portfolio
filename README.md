@@ -1,16 +1,125 @@
-# React + Vite
+# 🖥️ Portfolio Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A **macOS-inspired personal portfolio** built with **React, Tailwind CSS, Zustand, and GSAP**, designed to simulate a real desktop experience inside the browser.
+Users can interact with windows, folders, Finder, Dock, and files just like an operating system.
 
-Currently, two official plugins are available:
+🌐 **Live Demo:**
+👉 [https://portfolio-self-three-95.vercel.app/](https://portfolio-self-three-95.vercel.app/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## ✨ Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+* 🪟 **Window-based UI** (Finder, Resume, Images, Text files, Contact, etc.)
+* 📁 **Finder-like file explorer** with folders & files
+* 🧠 **Global state management** using Zustand
+* 🎯 **Dock with app launching behavior**
+* 🖱️ **Draggable desktop icons** (GSAP Draggable)
+* 🎨 **Tailwind CSS styling** with macOS aesthetics
+* 📄 **File-type based window opening** (PDF, images, text, links)
+* 🖥️ **Desktop-first design** (mobile view intentionally restricted)
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🛠️ Tech Stack
+
+| Technology       | Purpose             |
+| ---------------- | ------------------- |
+| **React**        | Component-based UI  |
+| **Vite**         | Fast dev & build    |
+| **Tailwind CSS** | Styling             |
+| **Zustand**      | Global state        |
+| **GSAP**         | Drag & animations   |
+| **Lucide Icons** | Icons               |
+| **clsx**         | Conditional classes |
+
+---
+
+## 📂 Project Structure
+
+```
+src/
+│
+├── components/        # Dock, Window controls, UI elements
+├── windows/           # Finder, Contact, Resume, Image, Text apps
+├── store/             # Zustand stores (window, location)
+├── constants/         # File system structure
+├── HOC/               # windowWrapper logic
+├── assets/images/     # Icons, wallpaper, previews
+├── index.css          # Tailwind + custom macOS styles
+└── main.jsx           # App entry
+```
+
+---
+
+## 🧠 Core Concepts
+
+### Window System
+
+* Centralized window logic using `windowWrapper`
+* Handles open, close, minimize, maximize, z-index
+
+### Finder & File System
+
+* Folder/file structure defined in `constants`
+* Grid-based layout for clean rows & columns
+* Double-click behavior like macOS
+
+### State Management
+
+* **Zustand** manages:
+
+  * Open windows
+  * Active window
+  * File data
+  * Active folder
+
+### Desktop Icons
+
+* Draggable using **GSAP Draggable**
+* Bound to screen container
+* Open Finder on click
+
+---
+
+## 🚀 Run Locally
+
+```bash
+git clone https://github.com/your-username/portfolio.git
+cd portfolio
+npm install
+npm run dev
+```
+
+---
+
+## 📌 Future Enhancements
+
+* Keyboard shortcuts
+* Window snapping
+* Persistent desktop icon positions
+* Dark mode
+* Context menu support
+
+---
+
+## 🙌 Author
+
+**Prashant Bisht**
+Frontend Developer | Engineering Student
+📍 Nainital, Uttarakhand, India
+
+🌐 Live Portfolio:
+[https://portfolio-self-three-95.vercel.app/](https://portfolio-self-three-95.vercel.app/)
+
+---
+
+## ⭐ Support
+
+If you like this project, please ⭐ star the repository and share it!
+
+---
+
+### ⚠️ Note
+
+This project is designed for **desktop browsers** to fully experience the macOS-style UI.
